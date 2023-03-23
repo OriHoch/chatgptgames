@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>שכנעו את רוטמן לבטל את הרפורמה המשפטית</title>
+</head>
+<body dir="rtl" style="font-family: Arial,serif;">
+    <div id="chatbox">
+        <div id="messages">
+            <p><b>נסו לשכנע את שמחה רוטמן לבטל את הרפורמה המשפטית</b></p>
+        </div>
+        <div id="loading-gif" style="visibility: hidden">
+            <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" alt="loading" style="width: 100px;">
+        </div>
+        <form id="user-input-form">
+            <input type="text" id="user-input" placeholder="נסו לשכנע אותי..." style="width:80%;">
+            <button type="submit">שלח</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        window.conversation = [];
+        $("#user-input-form").on("submit", function(event) {
+            event.preventDefault();
+            const userInput = $("#user-input").val();
+            if (!userInput) return;
+            $('#loading-gif').css('visibility', 'visible');
+            window.conversation.push(userInput);
+            $("#messages").append(`<p>${userInput}</p>`);
+            $("#user-input").val("");
+
+            $.ajax({
+                type: "POST",
+                url: "/get_response",
+                data: {"conversation": JSON.stringify(window.conversation)},
+                success: function(data) {
+                    window.conversation.push(data.ai_response);
+                    $("#messages").append(`<p style="font-weight: bold">רוטמן: ${data.ai_response}</p>`);
+                    $('#loading-gif').css('visibility', 'hidden');
+                },
+                error: function() {
+                    $("#messages").append("<p style='font-weight: bold'>שגיאה: Unable to get response.</p>");
+                    $('#loading-gif').css('visibility', 'hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
