@@ -1,0 +1,114 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+}
+
+.chat-container {
+    width: 70%;
+    max-width: 1024px;
+    height: 80%;
+    max-height: 768px;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-box {
+    flex-grow: 1;
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+.message {
+    max-width: 70%;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: flex-end;
+}
+
+.message-face {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-left: 0.5rem;
+    margin-right: 0;
+}
+
+.left {
+    background-color: #e6e6e6;
+    align-self: flex-start;
+    float: left;
+    clear: both;
+}
+
+.right {
+    background-color: #0084ff;
+    color: white;
+    align-self: flex-end;
+    float: right;
+    clear: both;
+}
+
+.input-container {
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid #e6e6e6;
+}
+
+.chat-input {
+    width: 90%;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    border: 1px solid #e6e6e6;
+    outline: none;
+}
+
+.chat-input::placeholder {
+    color: #999;
+}
+
+.send-btn {
+    background-color: #0084ff;
+    color: white;
+    border: none;
+    border-radius: 1rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-left: 0.5rem;
+    transition: background-color 0.3s ease;
+}
+
+.send-btn:hover {
+    background-color: #0069d9;
+}
+
+.chat-title {
+    background-color: #0084ff;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    font-size: 1rem;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.chat-footer {
+    background-color: #0084ff;
+    color: white;
+    padding: 0;
+    text-align: center;
+    font-size: 1rem;
+}

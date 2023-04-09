@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}"{% if lang == 'he' %} dir="rtl"{% endif %}>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/chat.css">
+    <title>{% if lang == 'he' %}רובורוטמן{% else %}RoboRotman{% endif %}</title>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-title">
+            {% if lang == 'he' %}
+                {% include 'chat_title_he.html' %}
+            {% else %}
+                {% include 'chat_title_en.html' %}
+            {% endif %}
+        </div>
+        <div class="chat-box">
+            <div class="message left">
+                {% if lang == 'he' %}
+                    <p>נסו לשכנע אותי לבטל את הרפורמה המשפטית</p>
+                {% else %}
+                    <p>Try to convince me to halt the judicial reform</p>
+                {% endif %}
+
+            </div>
+        </div>
+        <form class="input-container">
+            <input type="text" class="chat-input">
+            <button class="send-btn">
+                {% if lang == 'he' %}שלחו{% else %}Send{% endif %}
+            </button>
+        </form>
+        <div class="chat-footer">
+            <h5 dir="ltr">
+                Developed with ♥ by <a href="https://github.com/OriHoch">Ori Hoch</a>, source code available <a href="https://github.com/OriHoch/chatgptgames/tree/main/rotman">here</a>.
+                Uses data from <a href="https://oknesset.org">Open Knesset</a> and <a href="https://openai.com">OpenAI</a> APIs.
+            </h5>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/static/chat.js"></script>
+</body>
+</html>
