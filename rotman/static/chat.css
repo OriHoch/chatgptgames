@@ -44,16 +44,23 @@ body {
     margin-right: 0;
 }
 
-.left {
+.bot {
     background-color: #e6e6e6;
+    color: black;
+}
+
+.user {
+    background-color: #0084ff;
+    color: white;
+}
+
+.left {
     align-self: flex-start;
     float: left;
     clear: both;
 }
 
 .right {
-    background-color: #0084ff;
-    color: white;
     align-self: flex-end;
     float: right;
     clear: both;

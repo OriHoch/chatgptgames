@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/chat.css">
+    <link rel="stylesheet" href="/static/chat.css?version={{ version }}">
     <title>{% if lang == 'he' %}רובורוטמן{% else %}RoboRotman{% endif %}</title>
+    <!-- version {{ version }} -->
 </head>
 <body>
     <div class="chat-container">
@@ -16,13 +17,12 @@
             {% endif %}
         </div>
         <div class="chat-box">
-            <div class="message left">
+            <div class="message {% if lang == 'he' %}left bot{% else %}right bot{% endif %}">
                 {% if lang == 'he' %}
                     <p>נסו לשכנע אותי לבטל את הרפורמה המשפטית</p>
                 {% else %}
                     <p>Try to convince me to halt the judicial reform</p>
                 {% endif %}
-
             </div>
         </div>
         <form class="input-container">
@@ -39,6 +39,6 @@
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="/static/chat.js"></script>
+    <script src="/static/chat.js?version={{ version }}"></script>
 </body>
 </html>

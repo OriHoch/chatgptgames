@@ -5,6 +5,7 @@ from textwrap import dedent
 import openai
 from flask import Flask, render_template, request, jsonify, redirect
 
+
 app = Flask(__name__)
 
 app.config.update({
@@ -13,6 +14,12 @@ app.config.update({
 
 # Set your OpenAI API key
 openai.api_key = os.environ['OPENAI_API_KEY']
+
+if os.path.exists(os.path.join(os.path.dirname(__file__), "VERSION.txt")):
+    with open(os.path.join(os.path.dirname(__file__), "VERSION.txt")) as f:
+        VERSION = f.read().strip()
+else:
+    VERSION = "local-dev"
 
 # generated using generate_prompts.py based on Rotman texts from committee meeting protocols (with some changes)
 CHAT_STYLE_PROMPT = dedent('''
@@ -68,12 +75,12 @@ def index():
 
 @app.route("/he")
 def he():
-    return render_template("chat.html", lang="he")
+    return render_template("chat.html", lang="he", version=VERSION)
 
 
 @app.route("/en")
 def en():
-    return render_template("chat.html", lang="en")
+    return render_template("chat.html", lang="en", version=VERSION)
 
 
 @app.route("/get_response", methods=["POST"])

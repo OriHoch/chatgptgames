@@ -5,7 +5,9 @@ WORKDIR /srv
 COPY gunicorn_conf.py ./
 COPY requirements.txt ./
 RUN pip install -r requirements.txt
-COPY app.py ./
+COPY *.py ./
 COPY templates ./templates
 ENV PYTHONUNBUFFERED=1
+ARG VERSION
+RUN if [ -z "$VERSION" ]; then echo "$(date +%s)" > /srv/VERSION.txt; else echo "${VERSION}" > /srv/VERSION.txt; fi
 ENTRYPOINT ["gunicorn", "-c", "gunicorn_conf.py", "app:app"]
