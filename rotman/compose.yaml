@@ -2,13 +2,13 @@ version: "3.9"
 
 services:
   nginx:
-    image: rotman-nginx
+    image: ghcr.io/orihoch/chatgptgames/rotman-nginx:latest
     build:
       context: .
       dockerfile: nginx.Dockerfile
 
   web:
-    image: rotman
+    image: ghcr.io/orihoch/chatgptgames/rotman:latest
     build: .
     environment:
       OPENAI_API_KEY: "${OPENAI_API_KEY}"
