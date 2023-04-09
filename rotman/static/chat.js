@@ -1,20 +1,24 @@
 $(function(){
     const lang = $("html").attr("lang");
-    let SUCCESS, ERROR;
+    let SUCCESS, ERROR, USER_DIR, BOT_DIR;
     if (lang === 'he') {
         SUCCESS = 'כל הכבוד! הצלחת לשכנע את רובורוטמן לבטל את הרפורמה!'
         ERROR = "לא הצלחתי לקבל תשובה, נסו שוב"
+        USER_DIR = 'left'
+        BOT_DIR = 'right'
     } else {
         SUCCESS = 'Well done! You successfuly convinvced RoboRotman to cancel the reform!'
         ERROR = "Unable to get response, please try again."
+        USER_DIR = 'right'
+        BOT_DIR = 'left'
     }
     let conversation = [];
     let processing = false;
     const $chatBox = $(".chat-box");
     const $chatInput = $(".chat-input");
     $chatInput.focus();
-    const getMessageDiv = function(dir, userInput, html) {
-        const messageDiv = $(`<div class="message ${dir}">`)
+    const getMessageDiv = function(dir, userInput, html, extra_classes) {
+        const messageDiv = $(`<div class="message ${dir} ${extra_classes}">`)
         const p = $('<p>')
         if (userInput) {
             p.text(userInput)
@@ -32,9 +36,10 @@ $(function(){
         $chatInput.attr("disabled", true);
         processing = true;
         conversation.push(userInput);
-        $chatBox.append(getMessageDiv("right", userInput))
-        $chatBox.append(getMessageDiv("left", null,
-            '<img src="/static/57-server-outline.gif" alt="loading" width="50" height="50">'))
+        $chatBox.append(getMessageDiv(BOT_DIR, userInput, null, 'user'))
+        $chatBox.append(getMessageDiv(USER_DIR, null,
+            '<img src="/static/57-server-outline.gif" alt="loading" width="50" height="50">',
+            'bot'))
         $chatBox.scrollTop($chatBox[0].scrollHeight);
         const $lastMessage = $chatBox.find(".message:last-child");
         $.ajax({
