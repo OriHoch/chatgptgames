@@ -129,6 +129,7 @@ body {
     }
     .chat-box {
         padding: 0.5rem;
+        max-height: 50vh
     }
     .input-container {
         padding: 0.5rem;
