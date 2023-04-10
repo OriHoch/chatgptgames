@@ -10,9 +10,9 @@ body {
 }
 
 .chat-container {
-    width: 70%;
+    width: 90%;
     max-width: 1024px;
-    height: 80%;
+    height: 95%;
     max-height: 768px;
     background-color: white;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -118,4 +118,43 @@ body {
     padding: 0;
     text-align: center;
     font-size: 1rem;
+}
+
+@media (max-width: 768px), (max-height: 768px) {
+    .chat-container {
+        width: 100%;
+        height: 100%;
+        max-width: none;
+        max-height: none;
+    }
+    .chat-box {
+        padding: 0.5rem;
+    }
+    .input-container {
+        padding: 0.5rem;
+    }
+    .chat-input {
+        width: 80%;
+        font-size: 0.9rem;
+    }
+    .message {
+        max-width: 80%;
+    }
+    h2 {
+        font-size: 1.1rem;
+        margin-top: 0.2rem;
+        margin-bottom: 0.1rem;
+    }
+
+    h3 {
+        font-size: 0.8rem;
+        margin-top: 0.2rem;
+        margin-bottom: 0.1rem;
+    }
+
+    h5 {
+        font-size: 0.6rem;
+        margin-top: 0.05rem;
+        margin-bottom: 0.05rem;
+    }
 }
